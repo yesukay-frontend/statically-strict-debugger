@@ -68,6 +68,7 @@ class Light extends General {
         componentData.lightIntensity = intensity;
         const lightSwitch = this.closestSelector(element, ".rooms", ".light-switch");
         if (intensity === 0) {
+            componentData.isLightOn = false;
             this.sliderLight(componentData.isLightOn, lightSwitch);
             return;
         }
@@ -91,4 +92,5 @@ class Light extends General {
         }
     }
 }
+console.log("Light class");
 export default Light;

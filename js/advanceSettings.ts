@@ -8,6 +8,7 @@ class AdvanceSettings extends Light {
     super();
   }
 
+  // TODO: Chhange
   #markup(component: ComponentData) {
     const { name, numOfLights, autoOn, autoOff } = component;
     return `

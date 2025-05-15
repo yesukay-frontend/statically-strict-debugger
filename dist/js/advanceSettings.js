@@ -109,7 +109,6 @@ class AdvanceSettings extends Light {
     timeDifference(selectedTime) {
         const now = new Date();
         const setTime = this.formatTime(selectedTime).getTime() - now.getTime();
-        console.log(setTime, now);
         return setTime;
     }
     async timer(time, component) {
