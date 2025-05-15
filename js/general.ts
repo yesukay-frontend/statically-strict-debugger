@@ -187,6 +187,10 @@ class General {
     element.textContent = value;
   }
 
+  toggleHidden(element: Element) {
+    element.classList.toggle("hidden");
+  }
+
   removeHidden(element: Element) {
     element.classList.remove("hidden");
   }
