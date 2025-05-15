@@ -183,16 +183,8 @@ class General {
     element.style.filter = `brightness(${lightIntensity})`;
   }
 
-  updateComponentData(data: object) {
-    this.componentsData;
-  }
-
   updateMarkupValue(element: Element, value: string) {
     element.textContent = value;
-  }
-
-  toggleHidden(element: Element) {
-    element.classList.toggle("hidden");
   }
 
   removeHidden(element: Element) {
@@ -203,31 +195,32 @@ class General {
   }
 
   setComponentElement(roomData: ComponentData) {
-    let parent;
-    if (roomData.name === "walkway & corridor") {
-      const elementClassName = this.formatTextToClassName(roomData.name);
-      parent = this.selector(`.${elementClassName}`);
-    } else if (roomData.name === "guest room") {
-      const elementClassName = this.formatTextToClassName(roomData.name);
-      parent = this.selector(`.${elementClassName}`);
-    } else if (roomData.name === "outdoor lights") {
-      const elementClassName = this.formatTextToClassName(roomData.name);
-      parent = this.selector(`.${elementClassName}`);
-    } else {
-      parent = this.selector(`.${roomData.name}`);
-    }
-
+    const elementClassName = this.formatTextToClassName(roomData.name);
+    const parent = this.selector(`.${roomData.name}`);
     const buttonElement = document.querySelector(".light-switch");
 
-    if (roomData.element) return;
+    if (roomData["element"]) return;
 
-    roomData.element = buttonElement ?? undefined;
+    roomData.element = buttonElement || undefined;
+
+    return roomData.element;
   }
 
   formatTextToClassName(name: string) {
-    const words = name.split(" ");
-    const newWord = words.join("_");
-    return newWord;
+    const words = name.replace(/\s+/g, "_").trim().toLowerCase();
+    return words;
+  }
+
+  toggleGeneralLightSwitch() {
+    // get all rooms
+    const rooms: Record<string, ComponentData> = this.componentsData;
+
+    if (!rooms) return;
+    // turn on/off all lights
+    Object.entries(rooms).forEach((room) => {
+      room[1].isLightOn = !room[1].isLightOn;
+    });
+    return true;
   }
 }
 

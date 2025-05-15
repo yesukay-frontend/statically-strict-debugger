@@ -1,4 +1,3 @@
-"use script";
 // elements declarations
 const homepageButton = document.querySelector(".entry_point");
 const homepage = document.querySelector("main");
@@ -8,18 +7,20 @@ const advanceFeaturesContainer = document.querySelector(
 );
 const nav = document.querySelector("nav");
 const loader = document.querySelector(".loader-container");
+const generalLightSwitch = document.querySelector(".general_light_switch");
+const wifiSwitch = document.querySelector(".network-container");
 
 // imports
-import Light from "./js/basicSettings.ts";
-import AdvanceSettings from "./js/advanceSettings.ts";
+import Light from "./js/basicSettings.js";
+import AdvanceSettings from "./js/advanceSettings.js";
 
 // object creation
 const lightController = new Light();
 const advancedSettings = new AdvanceSettings();
 
 // global variables
-let selectedComponent;
-let isWifiActive = true;
+let selectedComponent: string;
+let isWifiActive: boolean = true;
 
 // Event handlers
 // hide homepage after button is clicked
@@ -65,7 +66,7 @@ mainRoomsContainer?.addEventListener("change", (e) => {
 });
 
 // advance settings modal
-advanceFeaturesContainer?.addEventListener("click", (e) => {
+advanceFeaturesContainer!.addEventListener("click", (e) => {
   const selectedElement = e.target as Element;
 
   if (selectedElement?.closest(".close-btn")) {
@@ -95,4 +96,15 @@ advanceFeaturesContainer?.addEventListener("click", (e) => {
       advancedSettings.customizationCancelled(selectedElement, ".defaultOff");
     }
   }
+});
+
+generalLightSwitch!.addEventListener("click", () => {
+  console.log("general switch clicked event");
+  if (isWifiActive) return;
+  lightController.toggleGeneralLightSwitch();
+});
+
+wifiSwitch!.addEventListener("click", () => {
+  console.log("wifi switch clicked event");
+  isWifiActive = !isWifiActive;
 });

@@ -4,4 +4,4 @@
 
 3. Refactored capFirstLetter() into a modular one
 
-4.
+4. Error fixed by using backticks for getComponent()

@@ -9,12 +9,11 @@
     <link
       rel="stylesheet"
       href="style.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/chart.js"
-      defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
     <script
       type="module"
-      src="main.js"></script>
+      src="./dist/main.js"
+      defer></script>
   </head>
   <body>
     <!-- homepage ui -->
@@ -43,14 +42,13 @@
           src="./assets/svgs/wifi.svg"
           alt="wifi svg icon" />
       </button>
-      <button class="general_light_switch">
+      <button
+        class="general_light_switch"
+        background-color="red">
         <img
           src="./assets/svgs/light_bulb.svg"
           alt="light svg icon" />
       </button>
-      <!-- <section>
-            <p>JAY</p>
-        </section> -->
     </nav>
     <section class="application_container hidden">
       <div class="flex1">

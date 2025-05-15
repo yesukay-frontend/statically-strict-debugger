@@ -1,6 +1,4 @@
-"use strict";
-
-import General, { ComponentData } from "./general.ts";
+import General, { ComponentData } from "./general.js";
 interface LightComponentSelectors {
   room: string | undefined;
   componentData: ComponentData | undefined;
@@ -12,7 +10,6 @@ class Light extends General {
   constructor() {
     super();
   }
-
   notification(message: string): string {
     return `
             <div class="notification">
@@ -119,6 +116,7 @@ class Light extends General {
     );
 
     if (intensity === 0) {
+      componentData!.isLightOn = false;
       this.sliderLight(componentData!.isLightOn, lightSwitch as Element);
       return;
     }
@@ -147,4 +145,5 @@ class Light extends General {
   }
 }
 
+console.log("Light class");
 export default Light;
