@@ -17,3 +17,7 @@
 9. The keys for some elements in the rooms object had [] or [[]] wrapped around it hence accessing suck keys was problematic with the code structure
 
 10. # for marking private was maintained instead of switching to "private" keyword because i want to maintain the private state during runtime as well. Using private keyword will make the compiled code ignore the private keyword.
+
+11. Refactored formatTime() to handle hour & min as parsed values
+
+12. In main.ts mainRoomsContainer being hooked up with the change event listener, handleLightIntensitySlider() expected an integer but got a string which had to be parsed
